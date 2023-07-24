@@ -10,11 +10,15 @@ export default function TodoGenerator() {
         const value = e.target.value;
         setTaskName(value);
     }
+
+    const handleAddTodoTask= () => {
+        dispatch(create({ name:taskName }));
+        setTaskName("");
+    }
     return(
         <div className='todo-generator'>
-            <input placeholder='input a new todo here...' onChange={handleTaskNameChange}></input>
-            <button onClick={() => dispatch(create({name:taskName})
-            )}> Add </button>
+            <input placeholder='input a new todo here...' onChange={handleTaskNameChange} value={taskName}></input>
+            <button onClick={handleAddTodoTask}> Add </button>
         </div>
     );
 }
