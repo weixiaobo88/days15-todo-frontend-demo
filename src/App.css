@@ -40,3 +40,7 @@
 .todo-generator button {
   width: 180px;
 }
+
+.task-name.done {
+  text-decoration: line-through;
+}
