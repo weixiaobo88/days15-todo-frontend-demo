@@ -18,7 +18,7 @@ export default function TodoGenerator() {
     return(
         <div className='todo-generator'>
             <input placeholder='input a new todo here...' onChange={handleTaskNameChange} value={taskName}></input>
-            <button onClick={handleAddTodoTask}> Add </button>
+            <button onClick={handleAddTodoTask} disabled={ !taskName } > Add </button>
         </div>
     );
 }
