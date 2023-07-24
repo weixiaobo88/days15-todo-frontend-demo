@@ -22,9 +22,12 @@ export const todoSlice = createSlice({
                 }
                 return task;
             })
+        },
+        remove: (state, action) => {
+            state.tasks = state.tasks.filter(task => task.id !== action.payload)
         }
     }
 })
 
-export const { create, update } = todoSlice.actions
+export const { create, update, remove } = todoSlice.actions
 export default todoSlice.reducer
