@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
-import { removeTodoTask, updateTodoTaskCompletedStatus } from "../reducers/todoSlice";
+import { removeTodoTask, updateTodoTaskStatus } from "../reducers/todoSlice";
 export default function TodoItem(props) {
     const dispatch = useDispatch();
     const handleTaskNameClick = () => {
-        dispatch(updateTodoTaskCompletedStatus({ id:props.task.id, completed: !props.task.completed }));
+        dispatch(updateTodoTaskStatus({ id:props.task.id, done: !props.task.done }));
     }
 
     const hanlleRemoveButtonClick = () => {
@@ -13,7 +13,7 @@ export default function TodoItem(props) {
     }
     return(
         <div className='todo-item'>
-            <div className={`task-name ${ props.task.completed ? 'done' : ''}`}
+            <div className={`task-name ${ props.task.done ? 'done' : ''}`}
                  onClick={handleTaskNameClick}>{props.task.name}</div>
             <div className='remove-button'  onClick={hanlleRemoveButtonClick}>x</div>
         </div>
