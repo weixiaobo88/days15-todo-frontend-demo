@@ -1,14 +1,14 @@
 import { useDispatch } from "react-redux";
-import { update, remove } from "../reducers/todoSlice";
+import { removeTodoTask, updateTodoTaskCompletedStatus } from "../reducers/todoSlice";
 export default function TodoItem(props) {
     const dispatch = useDispatch();
     const handleTaskNameClick = () => {
-        dispatch(update({ id:props.task.id, completed: !props.task.completed }));
+        dispatch(updateTodoTaskCompletedStatus({ id:props.task.id, completed: !props.task.completed }));
     }
 
     const hanlleRemoveButtonClick = () => {
         if(window.confirm('Are you sure you wish to delete this item?')) {
-            dispatch(remove(props.task.id));
+            dispatch(removeTodoTask(props.task.id));
         }
     }
     return(

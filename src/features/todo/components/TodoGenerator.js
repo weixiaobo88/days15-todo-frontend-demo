@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { create } from "../reducers/todoSlice";
+import { createTodoTask } from "../reducers/todoSlice";
 
 export default function TodoGenerator() {
     const [taskName, setTaskName] = useState("");
@@ -12,7 +12,7 @@ export default function TodoGenerator() {
     }
 
     const handleAddTodoTask= () => {
-        dispatch(create({ name:taskName }));
+        dispatch(createTodoTask({ name:taskName }));
         setTaskName("");
     }
     return(

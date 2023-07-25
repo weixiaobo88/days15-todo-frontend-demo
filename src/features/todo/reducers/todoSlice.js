@@ -12,10 +12,10 @@ export const todoSlice = createSlice({
         ]
     },
     reducers: {
-        create: (state, action) => {
+        createTodoTask: (state, action) => {
             state.tasks = [...state.tasks, { id:uuidv4(), ...action.payload,  completed: false }]
         },
-        update: (state, action) => {
+        updateTodoTaskCompletedStatus: (state, action) => {
             state.tasks = state.tasks.map( task => {
                 if(task.id === action.payload.id) {
                     return { id: task.id, name: task.name, completed: action.payload.completed }
@@ -23,11 +23,11 @@ export const todoSlice = createSlice({
                 return task;
             })
         },
-        remove: (state, action) => {
+        removeTodoTask: (state, action) => {
             state.tasks = state.tasks.filter(task => task.id !== action.payload)
         }
     }
 })
 
-export const { create, update, remove } = todoSlice.actions
+export const { createTodoTask, updateTodoTaskCompletedStatus, removeTodoTask } = todoSlice.actions
 export default todoSlice.reducer
