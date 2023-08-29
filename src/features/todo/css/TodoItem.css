@@ -11,7 +11,7 @@
     cursor: pointer;
   }
 
-  .task-name.done {
+  .task-text.done {
     text-decoration: line-through;
   }
   

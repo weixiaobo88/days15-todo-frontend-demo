@@ -17,7 +17,7 @@ export default function TodoItem(props) {
 
     return(
         <div className='todo-item'>
-            <div className={`task-name ${ props.task.done ? 'done' : ''}`}
+            <div className={`task-text ${ props.task.done ? 'done' : ''}`}
                  onClick={handleTaskTextClick}>{props.task.text}</div>
             <div className='remove-button'  onClick={hanlleRemoveButtonClick}>x</div>
         </div>
