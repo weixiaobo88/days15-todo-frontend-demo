@@ -5,22 +5,22 @@ import { createTodoTask } from "../todoSlice";
 import '../css/TodoGenerator.css';
 
 export default function TodoGenerator() {
-    const [taskName, setTaskName] = useState("");
+    const [taskText, setTaskText] = useState("");
     const dispatch = useDispatch();
 
-    const handleTaskNameChange = (e) => {
+    const handleTaskTextChange = (e) => {
         const value = e.target.value;
-        setTaskName(value);
+        setTaskText(value);
     }
 
     const handleAddTodoTask = () => {
-        dispatch(createTodoTask({ name: taskName }));
-        setTaskName("");
+        dispatch(createTodoTask({ text: taskText }));
+        setTaskText("");
     }
     return (
         <div className='todo-generator'>
-            <input placeholder='input a new todo here...' onChange={handleTaskNameChange} value={taskName}></input>
-            <button onClick={handleAddTodoTask} disabled={!taskName} > Add </button>
+            <input placeholder='input a new todo here...' onChange={handleTaskTextChange} value={taskText}></input>
+            <button onClick={handleAddTodoTask} disabled={!taskText} > Add </button>
         </div>
     );
 }

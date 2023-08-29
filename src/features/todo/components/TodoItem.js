@@ -5,7 +5,7 @@ import '../css/TodoItem.css';
 export default function TodoItem(props) {
     const dispatch = useDispatch();
 
-    const handleTaskNameClick = () => {
+    const handleTaskTextClick = () => {
         dispatch(updateTodoTaskStatus({ id:props.task.id, done: !props.task.done }));
     }
 
@@ -18,7 +18,7 @@ export default function TodoItem(props) {
     return(
         <div className='todo-item'>
             <div className={`task-name ${ props.task.done ? 'done' : ''}`}
-                 onClick={handleTaskNameClick}>{props.task.name}</div>
+                 onClick={handleTaskTextClick}>{props.task.text}</div>
             <div className='remove-button'  onClick={hanlleRemoveButtonClick}>x</div>
         </div>
     );
