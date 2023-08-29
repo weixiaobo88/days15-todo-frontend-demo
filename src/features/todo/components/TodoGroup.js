@@ -6,7 +6,7 @@ export default function TodoGroup() {
     return (
         <div className='todo-group'>
             {todoTasks.map(((todoTask) =>
-                <TodoItem key= {todoTask.id} task={todoTask}></TodoItem>
+                <TodoItem key={todoTask.id} task={todoTask}></TodoItem>
             ))}
         </div>
     );

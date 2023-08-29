@@ -1,8 +1,9 @@
 import TodoGenerator from "./TodoGenerator";
 import TodoGroup from "./TodoGroup";
+import '../css/TodoList.css';
 
 export default function TodoList() {
-    return(
+    return (
         <div className='todo-list'>
             <h1>Todo List</h1>
             <TodoGroup />
