@@ -9,12 +9,14 @@ import HelpPage from './pages/HelpPage';
 import TodoList from './features/todo/components/TodoList';
 import DoneList from './features/todo/components/DoneList';
 import TodoItemDetail from './features/todo/components/TodoItemDetail';
+import ErrorPage from './pages/ErrorPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
          index:true,
