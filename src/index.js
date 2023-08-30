@@ -15,8 +15,12 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        index:true,
+         index:true,
          element: <TodoList />
+      },
+      {
+        path: "/done",
+        element: <TodoList isDone={true} />
       },
       {
         path: "/help",

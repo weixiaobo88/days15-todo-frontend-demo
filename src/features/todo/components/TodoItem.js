@@ -6,7 +6,12 @@ export default function TodoItem(props) {
     const dispatch = useDispatch();
 
     const handleTaskTextClick = () => {
-        dispatch(updateTodoTaskStatus({ id:props.task.id, done: !props.task.done }));
+        if(props.isDone) {
+            //TODO: go to the detail page
+            console.log(" go to the detail page");
+        } else {
+            dispatch(updateTodoTaskStatus({ id:props.task.id, done: !props.task.done }));
+        }
     }
 
     const hanlleRemoveButtonClick = () => {
