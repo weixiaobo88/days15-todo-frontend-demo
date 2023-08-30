@@ -1,4 +1,17 @@
 .app {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
+
+.app > .nav-bar > nav > ul {
+  display: flex;
+  justify-content: center;
+}
+
+.app > .nav-bar > nav > ul > li {
+  padding: 10px;
+  list-style: none;
+}
+
