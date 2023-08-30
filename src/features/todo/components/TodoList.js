@@ -9,9 +9,11 @@ import { resetTodoTask } from "../todoSlice";
 export default function TodoList() {
     const dispatch = useDispatch();
     useEffect(() => {
-        todoApi.getTodoTasks().then( response => {
+        async function fetchData() {
+            const response = await todoApi.getTodoTasks();
             dispatch(resetTodoTask(response.data));
-        });
+        }
+        fetchData();
     }, []);
 
     return (
