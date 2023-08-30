@@ -1,12 +1,15 @@
 import { useDispatch } from "react-redux";
-import { removeTodoTask, updateTodoTaskStatus } from "../todoSlice";
+import { removeTodoTask, resetTodoTask } from "../todoSlice";
 import '../css/TodoItem.css';
+import * as todoApi from "../../../api/todoApi";
 
 export default function TodoItem(props) {
     const dispatch = useDispatch();
 
-    const handleTaskTextClick = () => {
-        dispatch(updateTodoTaskStatus({ id:props.task.id, done: !props.task.done }));
+    const handleTaskTextClick = async () => {
+        await todoApi.updateTodoTask(props.task.id, {done: !props.task.done})
+        const response = await todoApi.getTodoTasks();
+        dispatch(resetTodoTask(response.data));
     }
 
     const hanlleRemoveButtonClick = () => {
