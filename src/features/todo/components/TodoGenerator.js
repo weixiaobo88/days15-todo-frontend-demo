@@ -1,28 +1,24 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { resetTodoTask } from "../todoSlice";
-import * as todoApi from "../../../api/todoApi";
 import '../css/TodoGenerator.css';
-
+import { useTodos } from "../hooks/useTodos";
+import { Button, Input } from "antd"
 export default function TodoGenerator() {
     const [taskText, setTaskText] = useState("");
-    const dispatch = useDispatch();
 
+    const { addTodo} = useTodos();
     const handleTaskTextChange = (e) => {
         const value = e.target.value;
         setTaskText(value);
     }
 
     const handleAddTodoTask = async () => {
-        await todoApi.addTodoTask({ text:taskText  })
-        const response = await todoApi.getTodoTasks()
-        dispatch(resetTodoTask(response.data));
+        addTodo(taskText);
         setTaskText("");
     }
     return (
         <div className='todo-generator'>
-            <input placeholder='input a new todo here...' onChange={handleTaskTextChange} value={taskText}></input>
-            <button onClick={handleAddTodoTask} disabled={!taskText} > Add </button>
+            <Input placeholder='input a new todo here...' onChange={handleTaskTextChange} value={taskText}></Input>
+            <Button type="primary" onClick={handleAddTodoTask} disabled={!taskText} > Add </Button>
         </div>
     );
 }

@@ -1,18 +1,18 @@
-import { useDispatch } from "react-redux";
-import { removeTodoTask } from "../todoSlice";
 import '../css/DoneItem.css';
 import { useNavigate } from "react-router-dom";
+import { useTodos } from "../hooks/useTodos";
+
 export default function DoneItem(props) {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+    const { deleteTodo } = useTodos();
+
     const handleTaskTextClick = () => {
         navigate('/done/'+ props.task.id);
     }
 
     const hanlleRemoveButtonClick = () => {
         if(window.confirm('Are you sure you wish to delete this item?')) {
-            dispatch(removeTodoTask(props.task.id));
+            deleteTodo(props.task.id);
         }
     }
 

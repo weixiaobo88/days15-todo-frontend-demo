@@ -2,19 +2,12 @@ import TodoGenerator from "./TodoGenerator";
 import TodoGroup from "./TodoGroup";
 import '../css/TodoList.css';
 import { useEffect } from "react";
-import * as todoApi from "../../../api/todoApi";
-import { useDispatch } from "react-redux";
-import { resetTodoTask } from "../todoSlice";
-
+import { useTodos } from "../hooks/useTodos";
 export default function TodoList() {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        async function fetchData() {
-            const response = await todoApi.getTodoTasks();
-            dispatch(resetTodoTask(response.data));
-        }
-        fetchData();
-    }, []);
+    const { loadTodos } = useTodos();
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => { loadTodos(); }, []);
 
     return (
         <div className='todo-list'>
