@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
 import { removeTodoTask } from "../todoSlice";
 import '../css/DoneItem.css';
-
+import { useNavigate } from "react-router-dom";
 export default function DoneItem(props) {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
+    
     const handleTaskTextClick = () => {
-        //TODO: go to the detail page
-        console.log(" go to the detail page");
+        navigate('/done/'+ props.task.id);
     }
 
     const hanlleRemoveButtonClick = () => {
