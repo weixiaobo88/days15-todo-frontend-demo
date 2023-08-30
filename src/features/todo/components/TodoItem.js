@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { removeTodoTask, resetTodoTask } from "../todoSlice";
+import { resetTodoTask } from "../todoSlice";
 import '../css/TodoItem.css';
 import * as todoApi from "../../../api/todoApi";
 
@@ -12,9 +12,11 @@ export default function TodoItem(props) {
         dispatch(resetTodoTask(response.data));
     }
 
-    const hanlleRemoveButtonClick = () => {
+    const hanlleRemoveButtonClick = async () => {
         if(window.confirm('Are you sure you wish to delete this item?')) {
-            dispatch(removeTodoTask(props.task.id));
+            await todoApi.deleteTodoTask(props.task.id);
+            const response = await todoApi.getTodoTasks()
+            dispatch(resetTodoTask(response.data));
         }
     }
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createTodoTask } from "../todoSlice";
-
+import { resetTodoTask } from "../todoSlice";
+import * as todoApi from "../../../api/todoApi";
 import '../css/TodoGenerator.css';
 
 export default function TodoGenerator() {
@@ -13,8 +13,10 @@ export default function TodoGenerator() {
         setTaskText(value);
     }
 
-    const handleAddTodoTask = () => {
-        dispatch(createTodoTask({ text: taskText }));
+    const handleAddTodoTask = async () => {
+        await todoApi.addTodoTask({ text:taskText  })
+        const response = await todoApi.getTodoTasks()
+        dispatch(resetTodoTask(response.data));
         setTaskText("");
     }
     return (
