@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const api = axios.create(getBaseURLByEnv());
-export default api;
 
 function getBaseURLByEnv() {
   const DEV_URL = "https://649138542f2c7ee6c2c7dd46.mockapi.io/api/v1/";
@@ -21,5 +20,8 @@ function getBaseURLByEnv() {
     },
   }[process.env.REACT_APP_ENV || "development"];
 
-  if (!baseURL) return QA_URL;
+  if (!baseURL) return { baseURL: QA_URL };
+  return baseURL;
 }
+
+export default api;
