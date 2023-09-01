@@ -6,7 +6,7 @@ function getBaseURLByEnv() {
   const DEV_URL = "https://649138542f2c7ee6c2c7dd46.mockapi.io/api/v1/";
   const QA_URL = "https://days15-todo-backend-demo-qa.up.railway.app/";
   const PROD_URL =
-    "https://days15-todo-backend-demo-production.up.railway.app/todos";
+    "https://days15-todo-backend-demo-production.up.railway.app/";
 
   const baseURL = {
     development: {
